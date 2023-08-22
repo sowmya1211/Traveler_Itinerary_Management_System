@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>LogIn / SignUp | Voyager</title>
+  <link rel = "stylesheet" href = "style.css">
+  <style>
+    .full-page{
+        display: flex; 
+        margin:0px;
+    }
+
+    .logo-disp{
+        width:45vw; 
+        height:95.794vh; 
+        background-color:#101010; 
+        display:flex;
+        
+    }
+    
+    .logo-disp a {
+        margin:auto; 
+        display:flex;
+    }
+
+    .logo-disp img{
+        margin:auto;
+    }
+
+    #second-half{
+        width:55vw; 
+        height:95.794vh; 
+        background-image:url('images/GoremeNationalPark_EN-US4875441908_1920x1080.jpg'); 
+        background-size:cover;
+    }
+
+    #second-half-overlay{
+        background-color: rgba(0,0,0,0.4); 
+        position:absolute; 
+        width:55vw; 
+        height:95.794vh; 
+        display:flex; 
+        flex-direction:column;
+    }
+
+    #buttons{
+        width:55vw; 
+        height:auto;  
+        display:flex; 
+        justify-content:center; 
+        align-items:center; 
+        margin:auto;
+    }
+
+    .border{
+        position: absolute;
+        color:white; 
+        outline:2px solid white; 
+        pointer-events:none;
+    }
+
+    #log-in, #sign-up{
+        background-color: rgba(0, 0, 0, 0.8); 
+        margin:auto; 
+        padding:13px 35px; 
+        border-radius:3px; 
+        color:white; 
+        font-family:PoiretOne-Regular; 
+        font-size:20px;
+        cursor: pointer;
+    }
+
+    #log-in:hover, #sign-up:hover{
+        background-color: rgba(30, 30, 30, 0.8);
+    }
+
+    .log-page, .sign-page{
+        display:flex; 
+        justify-content:center; 
+        align-items:center; 
+        margin-top:80px;
+    }
+
+    form{
+        width:500px;
+        height:350px;
+        margin:auto; 
+        background-color:rgba(0,0,0,0.8); 
+        display:flex; 
+        flex-direction:column; 
+        justify-content:center; 
+        align-items:center;
+        color: white;
+    }
+
+    .error{
+        color:red;
+    }
+
+    .line{
+        margin:auto;
+        width:400px;
+        display:flex;
+        justify-content: center;
+    }
+
+    label{
+        margin: auto;
+        width:120px;
+    }
+
+    input{
+        height: 20px;
+        margin: auto;
+        background-color: transparent;
+        color:white;
+        border:1px solid rgba(255, 255, 255, 0.5);
+        padding:5px;
+    }
+
+    button{
+        height:40px;
+        width:80px;
+        background-color: black;
+        color:white;
+        font-family: PoiretOne-Regular;
+        font-size: 15px;
+        border:1px solid white;
+        justify-content: center;
+        margin-top:20px;
+        margin-bottom:30px;
+    }
+
+    button:hover{
+        background-color: rgb(50, 50, 50);
+        border: 1px solid grey;
+        cursor:pointer;
+    }
+
+
+  </style>
+</head>
+
+<body style = "height:100vh; background-color:black;">
+    <div class = "full-page">
+        <div class = "logo-disp">
+            <a href = "index.html">
+                <img src="images/logo.png" width="80%">
+            </a>
+        </div>
+        
+        <div id = "second-half">
+            <div id = "second-half-overlay">
+                <div id = "buttons">
+                    <div id ="log-in" class ="log-in" onclick="logscreen()">Log In</div>
+                    <div class ="border" style = "margin-left:-425px; padding:50px 38px;"></div>
+                    <div class="vl"></div>
+                    <div id  ="sign-up" class ="sign-up" onclick="signscreen()">Sign Up</div>
+                    <div class ="border" style = "margin-left:415px; padding:50px 45px;"></div>
+                </div>
+                <div id = "form-page" style = "height:0vh;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        ©Copyright Voyager pvt. ltd. All Rights Reserved<br>
+    </footer>
+
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            }
+        }
+        xhttp.open("GET", "GetSession", true);
+        xhttp.send();
+        
+        setInterval(sessionValidater,2100); 
+        function sessionValidater(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText.split(",")[0]){
+                        window.location.replace("trav_hmpg.html");
+                    }
+                }
+            }
+            xhttp.open("GET", "GetSession", true);
+            xhttp.send(); 
+        }
+        
+        
+        
+
+        function logscreen(){
+            document.getElementById("log-in").style.backgroundColor = "rgba(30,30,30,0.8)";
+            document.getElementById("sign-up").style.backgroundColor = "";
+            var h = document.getElementById("form-page").style.height;
+            h = parseInt(h);
+            moveup(h);
+            fadeout(2); 
+ 
+            setTimeout(function(){
+                    loaddoc(1);
+                }
+                , 220);
+            
+        }
+
+        function signscreen(){
+            document.getElementById("log-in").style.backgroundColor = "";
+            document.getElementById("sign-up").style.backgroundColor = "rgba(30,30,30,0.8)";
+            var h = document.getElementById("form-page").style.height;
+            h = parseInt(h);
+            moveup(h);
+            fadeout(1); 
+
+            setTimeout(function(){
+                    loaddoc(2);
+                }
+                , 220);
+        
+        }
+
+        function loaddoc(n){
+            var xhttp = new XMLHttpRequest();
+            
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("form-page").innerHTML = "";
+                document.getElementById("form-page").innerHTML =this.responseText;
+                if(document.getElementsByClassName("sign-page").length!=0){
+                    document.getElementsByClassName("sign-page")[0].style.opacity = 0;
+                }
+                if(document.getElementsByClassName("log-page").length!=0){
+                    document.getElementsByClassName("log-page")[0].style.opacity = 0;
+                }
+              }
+              setTimeout(function(){
+                fadein(n);
+              }, 300);
+            };
+
+            if(n == 1){
+                xhttp.open("GET", "loginf.html", true);
+            }
+            if(n==2){
+                xhttp.open("GET", "signupform.html", true);
+            }
+            xhttp.send();
+        }
+
+        function moveup(h){
+            if(h==75){
+                return;
+            }
+            document.getElementById("form-page").style.height = h+"vh";
+            h = h+1;
+            setTimeout("moveup("+h+")", 10);
+        }
+
+        function fadeout(n){
+            if(document.getElementsByClassName("sign-page").length==0  && document.getElementsByClassName("log-page").length==0){
+                return;
+            }
+            if(n==2 && document.getElementsByClassName("sign-page").length != 0){
+                var ele = document.getElementsByClassName("sign-page")[0];
+                if(ele.style.opacity == 0){
+                    return;
+                }
+                ele.style.opacity-=0.05;
+                
+            }
+            if(n==1 && document.getElementsByClassName("log-page").length != 0){
+                var ele = document.getElementsByClassName("log-page")[0];
+                if(ele.style.opacity == 0){
+                    return;
+                }
+                ele.style.opacity-=0.05;
+                
+            }
+            setTimeout("fadeout("+n+")", 10);
+        }
+
+
+        function fadein(n){
+            if(document.getElementsByClassName("sign-page").length==0  && document.getElementsByClassName("log-page").length==0){
+                return;
+            }
+
+            if(n==2 && document.getElementsByClassName("sign-page").length != 0){
+                var ele = document.getElementsByClassName("sign-page")[0];
+                if(ele.style.opacity == 1){
+                    return;
+                }
+                var o = parseFloat(ele.style.opacity);
+                o+=0.05;
+                ele.style.opacity = (""+o);
+            }
+
+            if(n==1 && document.getElementsByClassName("log-page").length != 0){
+                var ele = document.getElementsByClassName("log-page")[0];
+                if(ele.style.opacity == 1){
+                    return;
+                }
+                var o = parseFloat(ele.style.opacity);
+                o+=0.05;
+                ele.style.opacity = (""+o);
+            }
+            setTimeout("fadein("+n+")", 50);
+        }
+
+        function val_login(){
+            var xhttp = new XMLHttpRequest();
+            var url = "LogIn?uid="+document.getElementById("uname").value+"&pwd="+document.getElementById("pwd").value;
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                    login_stat(this.responseText);   
+              }
+            };  
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+
+        function login_stat(txt){
+            var stat = txt.split("\n")[0];
+            var type = txt.split("\n")[1];
+            if(parseInt(stat)==1){
+                window.location.replace("SessionInitiate?uid="+document.getElementById("uname").value+"&utype="+type+"&new_user=0");
+            }
+            else{
+                document.getElementsByTagName("form")[0].reset();
+                document.getElementById("uname").focus();
+                document.getElementsByClassName("error")[0].innerHTML = "Incorrect username or password!";
+            }
+        }
+
+        function val_signup(){
+            var role = document.getElementById('type').value;
+            var uname;
+            uname = document.getElementById('uname').value;
+            var pwd1 = document.getElementById('pwd').value;
+            var pwd2 = document.getElementById('cnfrm-password').value;
+            
+            if(uname==""){
+                document.getElementById("uname").focus();
+                document.getElementsByClassName("error")[0].innerHTML = "User name cannot be empty";
+                return;
+            }
+            else{
+                var xhttp = new XMLHttpRequest(); 
+                var url = "ValidateUname?uid="+uname;
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        if(parseInt(this.responseText)==0){
+                            document.getElementById("uname").focus();
+                            document.getElementsByClassName("error")[0].innerHTML = "The user name exists!";
+                             return;
+                        }
+                        else{
+                            if(pwd1==pwd2){
+                                var t = val_pwd(pwd1);
+                                if(t==""){
+                                    var data = "role="+role+"&uid=" + uname + "&pwd=" + pwd1;
+                                    window.location.replace("InsertUser?"+data);
+                                }
+                                else{
+                                    document.getElementsByClassName("error")[0].innerHTML = t;
+                                    return;
+                                }
+                            }
+                            else{
+                                document.getElementById("pwd").focus();
+                                document.getElementsByClassName("error")[0].innerHTML = "Passwords do not match!";
+                                return;
+                            }
+                        }
+                    }
+                };  
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+        }
+
+        function val_pwd(pwd) {
+            txt = "";
+            if(pwd.length < 8){
+                txt += "Password must contain atleast 8 characters<br>";
+            }
+            var patt = /[A-Z]/;
+            if(patt.test(pwd) == false){
+                txt += "Password must contain atleast 1 uppercase letter<br>";
+            }
+            var patt = /[a-z]/;
+            if(patt.test(pwd) == false){
+                txt += "Password must contain atleast 1 lowercase letter<br>";
+            }
+            var patt = /[0-9]/;
+            if(patt.test(pwd) == false){
+                txt += "Password must contain atleast 1 digit<br>";
+            }
+            var patt = /[!@#\$%\^&\*()_]/;
+            if(patt.test(pwd) == false){
+                txt+= "Password must contain atleast 1 special character<br>";
+            }
+            return txt;
+        }
+        
+    </script>
+
+</body>
+
+</html>

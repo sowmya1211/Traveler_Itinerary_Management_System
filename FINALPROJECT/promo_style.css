@@ -1,0 +1,141 @@
+.nav-bar {
+    color:white;
+    display:flex; 
+    flex-direction:row; 
+    justify-content:flex-start;
+    align-content: center; 
+    background-color:black; 
+    position: fixed; 
+    width: 100vw;
+    height: 60px;
+    z-index: 4;
+}
+
+#logo-def{
+    width:270px; 
+    display:flex;
+}
+
+#prof{
+    width:60px; 
+    margin-left:auto; 
+    display:flex;
+    flex-direction: column;
+    margin-right:30px;
+}
+
+#prof #drop{
+    display:none;
+    padding-top:4px;
+    flex-direction: column;
+    background-color: black;
+    width:90px;
+    font-family:PoiretOne-Regular;
+    font-size: large;
+}
+
+.nav-bar #prof span{
+    text-align: center;
+    padding:5px;
+}
+.nav-bar #prof:hover>#drop{
+    display: flex;
+}
+
+.drop-list:hover{
+    background-color:grey;
+}
+
+#scam{
+    position:absolute; 
+    background-color:transparent; 
+    width:100vw; 
+    height:92vh; 
+    margin-top:10vh; 
+    z-index:60; 
+    display:none; 
+    flex-direction:column; 
+}
+
+#row1{
+    width:800px; 
+    height:100px; 
+    margin-top:100px; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    margin:auto; 
+    z-index:61;
+}
+
+.boxshadow{
+    margin: auto; 
+    width:350px;
+    height:100px;
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    align-items:center;
+    color: white;
+    text-shadow: black 2px 2px 2px;;
+    font-size: 30px;
+    opacity: 70%;
+    background-color: black;
+    box-shadow: 3px 3px 5px 2px rgb(255, 255, 255), 0 0 20px black;
+}
+
+#row2{
+    width:800px; 
+    height:140px;  
+    display:flex; 
+    justify-content:center; 
+    align-items:center;  
+    margin:auto;
+    margin-top: 40px;
+    margin-bottom:20px;
+    z-index:61;
+}
+
+#view, #edit{
+    width:300px; 
+    height:200px; 
+    display:flex; 
+    margin: auto;
+    flex-direction:column; 
+    background-color:rgba(0,0,0,0.6); 
+    color:white; 
+    text-align: center;
+    justify-content:center; 
+    align-items:center; 
+    font-size:30px;
+    border:2px solid white;
+}
+
+#scam div#view:hover, #scam div#edit:hover{
+    background-color: rgba(100,100,100,0.5);
+}
+
+#heading {
+    font-size: 5vmax;
+    line-height: 1.3;
+    white-space: nowrap;
+    font-weight: 700;
+    text-align: center;
+    text-indent: -1%;
+    color:white;
+    text-shadow: 2px 5px 5px black;
+    text-align: center;
+    margin-left: -100px;
+}
+
+.log-page, .sign-page{
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    margin-top:80px;
+}
+
+body {
+    background-image: url(images/painting-1682416389136-9172.jpg); 
+    background-size: cover;
+}

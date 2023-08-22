@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Itinerary | Voyager</title>
+        <style>
+            html {
+                height: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                font-family: PoiretOne-Regular;
+                scroll-behavior: smooth; 
+            }
+            
+            body{
+                height: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                display: flex; 
+                flex-direction:column; 
+                background-image:url('images/painting-1682416389136-9172.jpg'); 
+                background-size:100vw 100vh; 
+                position:absolute;
+            }
+            .nav-bar {
+                color:white;
+                display:flex; 
+                flex-direction:row; 
+                justify-content:flex-start;
+                align-content: center; 
+                background-color:rgba(0,0,0,0.8); 
+                position: fixed; 
+                width: 100vw;
+                height: 60px;
+                z-index: 4;
+            }
+            
+            .dropdown{
+                height: 60px; 
+                width:100px;
+                text-align: center;
+                padding-left: 50px;
+                margin-left:auto;
+                align-items: center;
+            }
+            
+            .dropdown a{
+                color: rgb(200,200,200);
+                text-decoration:none;
+                text-align: center;
+            }
+            
+            .dropdown p{
+                margin-top: 5px;
+                display: none;
+            }
+            
+            .dropdown:hover>p{
+                display: block;
+                background-color: rgba(0,0,0,0.8);
+            }
+            
+            .dropdown p span{
+                padding: 5px;
+                display: block;
+                cursor: pointer;
+            }
+            
+            .dropdown p span:hover{
+                background-color: rgba(50, 50, 50, 0.8);
+            }
+            
+            .nav-bar #logo{
+                width: 70px;
+                height: 30px;
+            }
+
+            .tab{
+                padding:10% 3%; 
+                font-size:17px;
+                cursor: pointer;
+                border-bottom: 1px solid white;
+                border-top: 1px solid white;
+            }
+
+            .tab:hover{
+                background-color: grey;
+            }
+
+            #save, #view_iten{
+                margin:20px;
+                border:2px solid white; 
+                background-color:rgba(30,30,30,0.8);
+            }
+            #view_iten{
+                margin-top:auto; 
+            }
+
+            #save:hover, #view_iten:hover{
+                background-color: grey;
+            }
+            #page{
+                margin:auto auto; 
+                height:91%; 
+                width:105%; 
+                background-color:rgba(0,0,0,0.5); 
+                color:white; 
+                display:flex; 
+                margin-top:60px;
+            }
+
+            #nav{
+                height:100%; 
+                width:15%; 
+                background-color:black; 
+                display:flex; 
+                flex-direction:column;
+            }
+
+            .slide{ 
+                height:100%; 
+                width:95%;
+                background-color:rgba(0,0,0,0.3); 
+                color:white; 
+                display:flex;
+               
+            }
+
+            .filter-options, .show-options{
+                height:98%;
+                width:20%;
+                padding:-1px -1px;
+                background-color: rgba(0,0,0,0.2);
+                border: 2px solid white;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                font-size:18px;
+                padding-left:40px;
+                font-family:'Courier New', Courier, monospace;
+            }
+
+            .show-options{
+                width:50%;
+                overflow-y: auto;
+                padding:-1px -1px;
+                display:block;
+            }
+
+            .display, .display-iten{
+                height:98%;
+                width:70%;
+                padding:-1px -1px;
+                background-color: rgba(0,0,0,1);
+                border: 2px solid white;
+            }
+
+            .display-iten{
+                width:50%;
+            }
+
+            table{
+                margin:auto;
+                width:100%;
+                text-align: center;
+                font-size:20px;
+
+            }
+
+            tr{
+                outline: 0.2px solid rgba(255,255,255,0.2);
+                background-color: black;
+                cursor: pointer;
+            }
+
+            th{
+                padding:5px;
+                background-color: rgba(30,30,30,1);
+            }
+
+            td{
+                padding:5px;
+            }
+
+            tr:hover{
+                background-color: grey;;
+            }
+
+            button{
+                width:fit-content;
+                padding:20px;
+                background-color: black;
+                border: 1px solid white;
+                cursor: pointer;
+                color:white;
+                margin-bottom:10px;
+            }
+            button:hover{
+                background-color: grey;
+            }
+
+            
+        </style>
+    </head>
+    <body style = "width:100vw; height:100vh; display:flex; flex-direction:column;">
+        <div class = "nav-bar">
+            <p style = "margin:5px;">
+                <a id = "logo" href = "index.html">
+                    <img src="images/logo2-1.png" alt="logo" width = 250px;>
+                </a>
+                <div class ="dropdown">
+                    <div id = "prof" style = "display: flex;cursor: pointer;" onmouseover="noarrow()" onmouseout="arrow()">
+                        <span id = "arrow" style = "font-size:40px; height:fit-content; margin-top:-5px; width:25px;">&#8964;</span>
+                        <img src="images/img.jpg" height="50px" style = "margin-top:5px; margin-left:8 px; border-radius:25px;">
+                    </div>
+                    <p id = "drop">
+                        <span><a href = "profile_details.html">Profile</a></span><br>
+                        <span><a href = "LogOut" style = "cursor: pointer;">Log Out</a></span>
+                    </p>
+                </div>
+            </p>
+        </div>
+        <div id = "page">
+            <div id = "nav">
+                <div id = "onward-trans" class = "tab" onclick="onw()">Onward transit</div>
+                <div id = "return-trans" class = "tab" onclick="ret()">Return transit</div>
+                <div id = "accomodation" class = "tab" onclick = "acc()">Accommodation</div>
+                <div id = "iten" class = "tab" onclick = "itin()">Itinerary</div>
+                <div id = "view_iten" class = "tab" onclick = "new_page()">View trip summary</div>
+                <div id = "save" class = "tab" onclick = "save()">Save</div>
+
+            </div>
+            
+            <div class = "slide" id = "slide-onw">
+               <div class = "filter-options">
+                    <h3>FILTERS</h3>
+                    <div><input type="radio" name="st-city" id="st-city" value="st-city"><label for="st-city">Filter by start city</label></div><br>
+                    <div><input type="radio" name="dest-city" id="dest-city" value="dest-city"><label for="dest-city">Filter by dest city</label></div><br>
+                    <div><label for="trans">Filter by transit type:</label><br>
+                        <input type="radio" name="trans" id="Flight" value="Flight">Flight<br>
+                        <input type="radio" name="trans" id="Train" value="Train">Train
+                    </div><br>
+                    <div><label for="cost">Sort by cost:</label><br>
+                        <input type="radio" name="cost" id="inc" value="inc"><label for="inc">Increasing</label><br>
+                        <input type="radio" name="cost" id="dec" value="dec"><label for="dec">Decreasing</label>
+                    </div><br>
+                    <button type="button" onclick="onw_filter(0,'choose_onw')">Apply filters</button>
+                    <div>
+                        <p id = "choice1"></p>
+                    </div>
+               </div>
+               <div class = "display" style ="overflow-y: scroll;"></div> 
+            </div>
+            
+            <div class = "slide" id = "slide-ret">
+                <div class = "filter-options">
+                    <h3>FILTERS</h3>
+                    <div><input type="radio" name="st-city" id="st-city" value="st-city">Filter by start city</div><br>
+                    <div><input type="radio" name="dest-city" id="dest-city" value="dest-city">Filter by dest city</div><br>
+                    <div>Filter by transit type:<br>
+                        <input type="radio" name="trans" id="Flight" value="Flight">Flight<br>
+                        <input type="radio" name="trans" id="Train" value="Train">Train
+                    </div><br>
+                    <div>Sort by cost:<br>
+                        <input type="radio" name="cost" id="inc" value="inc">Increasing<br>
+                        <input type="radio" name="cost" id="dec" value="dec">Decreasing
+                    </div><br>
+                    <button type="button" onclick="onw_filter(1, 'choose_ret')">Apply filters</button>
+                    <div>
+                        <p id = "choice2"></p>
+                    </div>
+               </div>
+               <div class = "display" style ="overflow-y: scroll;"></div> 
+                
+            </div>
+            
+            <div class = "slide" id = "slide-accom">
+                <div class = "filter-options">
+                    <h3>FILTERS</h3>
+                    <div>Filter by accommodation type:<br>
+                        <input type="radio" name="acc" id="Hostel" value="Hostel">Hostel<br>
+                        <input type="radio" name="acc" id="Hotel" value="Hotel">Hotel<br>
+                        <input type="radio" name="acc" id="Resort" value="Resort">Resort<br>
+                        <input type="radio" name="acc" id="Villa" value="Villa">Villa<br>
+                        <input type="radio" name="acc" id="Homestay" value="Homestay">Homestay
+                    </div><br>
+                    <div>Sort by cost:<br>
+                        <input type="radio" name="cost1" id="inc" value="inc">Increasing<br>
+                        <input type="radio" name="cost1" id="dec" value="dec">Decreasing
+                    </div><br>
+                    <button type="button" onclick="acc_filter('choose_acc')">Apply filters</button>
+                    <div>
+                        <p id = "choice3"></p>
+                    </div>
+               </div>
+               <div class = "display" style ="overflow-y: scroll;"></div> 
+            </div>
+            
+            <div class = "slide" id = "slide-iten">
+                <div class = "show-options">
+               </div>
+               <div class = "display-iten" style = "display:flex; flex-direction:column;">
+                    <div style = "margin-left:40px;">Click on an item to display here!</div>
+                    <div id = "iten-deet" style = "height:100px; display:flex; text-align:center; color:aqua; justify-content:center; align-items:center; font-size:30px;"></div>
+                    <div style = "margin-left:40px;">Enter date of visit</div>
+                    <input id="dov" type ="date" style = "width:60%;height:30px; margin:auto;"><br>
+                    <div style = "margin-left:40px;">Enter time of visit</div>
+                    <input id = "tov" type ="time" style = "width:60%;height:30px; margin:auto;"><br>
+                    <div style = "margin-left:40px;">Enter duration of visit</div>
+                    <input id = "dur" type ="text" style = "width:60%;height:30px; margin:auto;"><br>
+                    <button type = "button" style = "margin:auto;" onclick="add_place()">Add Place</button>
+               </div> 
+            </div>
+        </div>
+    </body>
+    <script>
+        setInterval(sessionValidater,2000);
+        function sessionValidater(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText.split(",")[0]){
+                    }
+                    else{
+                        window.location.replace("login.html");
+                    }
+                }
+            }
+            xhttp.open("GET", "GetSession", true);
+            xhttp.send();
+        }
+
+        var onw_choice = "";
+        var ret_choice = "";
+        var acc_choice = "";
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var paramValue = url.searchParams.get("tid");
+
+        var st_city = "";
+        var dest_city = "";
+        var st_date = "";
+        var end_date = "";
+        
+        var xhttp1 = new XMLHttpRequest();
+        xhttp1.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                st_city = this.responseText.split("\n")[0];
+                dest_city = this.responseText.split("\n")[1];
+                st_date = this.responseText.split("\n")[2];
+                end_date = this.responseText.split("\n")[3];
+            }
+        }
+        xhttp1.open("GET", "GetTripDetails?tid="+paramValue, true);
+        xhttp1.send();
+        document.getElementById("onward-trans").click();
+
+        function add_place(){
+            if(document.getElementById("iten-deet").innerHTML==""){ 
+                window.alert("Please enter a place to add!");
+                return;
+            }
+            else if(document.getElementById("dov").value > end_date || document.getElementById("dov").value < st_date){
+                window.alert("Incorrect date of visit!\nDov must be between start and end date!");
+                return;
+            }
+
+            var xhttp1 = new XMLHttpRequest();
+            var url = "InsertItinerary?tid="+paramValue+"&ts="+document.getElementById("iten-deet").innerHTML+"&dov="+document.getElementById("dov").value+"&st_time="+document.getElementById("tov").value+"&duration="+document.getElementById("dur").value;
+            xhttp1.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("iten-deet").innerHTML="";
+                    document.getElementById("dov").value="";
+                    document.getElementById("tov").value="";
+                    document.getElementById("dur").value="";
+                }
+            }
+            xhttp1.open("GET", url , true);
+            xhttp1.send();
+        }
+
+        function new_page(){
+            window.open("trip_summary.html?trip_id="+paramValue, "_blank");
+        }
+
+        function onw(){
+            document.getElementById("onward-trans").style.backgroundColor = "grey";
+            document.getElementById("return-trans").style.backgroundColor = "";
+            document.getElementById("accomodation").style.backgroundColor = "";
+            document.getElementById("iten").style.backgroundColor = "";
+
+
+            document.getElementById("slide-onw").style.display="flex";
+            document.getElementById("slide-ret").style.display="none";
+            document.getElementById("slide-accom").style.display="none";
+            document.getElementById("slide-iten").style.display="none";
+
+            clear_display();
+            get_all_options(0, "choose_onw");
+        }
+
+        function ret(){
+            document.getElementById("onward-trans").style.backgroundColor = "";
+            document.getElementById("return-trans").style.backgroundColor = "grey";
+            document.getElementById("accomodation").style.backgroundColor = "";
+            document.getElementById("iten").style.backgroundColor = "";
+
+
+            document.getElementById("slide-onw").style.display="none";
+            document.getElementById("slide-ret").style.display="flex";
+            document.getElementById("slide-accom").style.display="none";
+            document.getElementById("slide-iten").style.display="none";
+            
+            clear_display();
+            get_all_options(1, "choose_ret");
+
+        }
+
+        function acc(){
+            document.getElementById("onward-trans").style.backgroundColor = "";
+            document.getElementById("return-trans").style.backgroundColor = "";
+            document.getElementById("accomodation").style.backgroundColor = "grey";
+            document.getElementById("iten").style.backgroundColor = "";
+
+            document.getElementById("slide-onw").style.display="none";
+            document.getElementById("slide-ret").style.display="none";
+            document.getElementById("slide-accom").style.display="flex";
+            document.getElementById("slide-iten").style.display="none";
+
+            clear_display();
+            get_all_options(2, "choose_acc");
+
+        }
+
+        function itin(){
+            document.getElementById("onward-trans").style.backgroundColor = "";
+            document.getElementById("return-trans").style.backgroundColor = "";
+            document.getElementById("accomodation").style.backgroundColor = "";
+            document.getElementById("iten").style.backgroundColor = "grey";
+
+            document.getElementById("slide-onw").style.display="none";
+            document.getElementById("slide-ret").style.display="none";
+            document.getElementById("slide-accom").style.display="none";
+            document.getElementById("slide-iten").style.display="flex";
+
+            clear_display();
+            retrieve_options();
+
+        }
+
+        function onw_filter(n, fn){
+            var fstc = document.getElementsByName("st-city")[n].checked;
+            var fdest = document.getElementsByName("dest-city")[n].checked;
+            var tt = "";
+            for(var i=0; i<2; i++){
+                if(document.getElementsByName("trans")[2*n+i].checked){
+                    tt = document.getElementsByName("trans")[2*n+i].value;
+                    break;
+                }
+            }
+
+            var c = "";
+            for(var i=0; i<2; i++){
+                if(document.getElementsByName("cost")[2*n+i].checked){
+                    c = document.getElementsByName("cost")[2*n+i].value;
+                    break;
+                }
+            }
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementsByClassName("display")[n].innerHTML = this.responseText;
+                }
+            }
+            if(n==0){
+                xhttp.open("GET", "TransFilt?st_city="+st_city+"&dest_city="+dest_city+"&c1="+fstc+"&c2="+fdest+"&c3="+tt+"&c4="+c+"&fn="+fn, true);
+            }
+            if(n==1){
+                xhttp.open("GET", "TransFilt?st_city="+dest_city+"&dest_city="+st_city+"&c1="+fstc+"&c2="+fdest+"&c3="+tt+"&c4="+c+"&fn="+fn, true);
+            }
+            xhttp.send();
+        }
+
+        function acc_filter(fn){
+            var at = "";
+            for(var i=0; i<5; i++){
+                if(document.getElementsByName("acc")[i].checked){
+                    at = document.getElementsByName("acc")[i].value;
+                    break;
+                }
+            }
+
+            var c = "";
+            for(var i=0; i<2; i++){
+                if(document.getElementsByName("cost1")[i].checked){
+                    c = document.getElementsByName("cost1")[i].value;
+                    break;
+                }
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementsByClassName("display")[2].innerHTML = this.responseText;
+                }
+            }
+            xhttp.open("GET", "AccFilt?dest_city="+dest_city+"&c1="+at+"&c2="+c+"&fn="+fn, true);
+            xhttp.send();
+        }
+
+
+
+        function get_all_options(n, fn){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementsByClassName("display")[n].innerHTML = this.responseText;
+                }
+            }
+            if(n < 2){
+                xhttp.open("GET", "GetAllTrans?fn="+fn, true);
+            }
+            else{
+                xhttp.open("GET", "GetAllAccom?fn="+fn+"&city="+dest_city, true);
+            }
+            xhttp.send();
+        }
+
+        function retrieve_options(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementsByClassName("show-options")[0].innerHTML = this.responseText;
+                }
+            }
+            xhttp.open("GET", "GetPlaceOptions?fn=myfn&dest_city="+dest_city, true);
+            xhttp.send();
+        }
+
+        function myfn(txt){
+            document.getElementById("iten-deet").innerHTML = document.getElementsByTagName("tr")[txt+1].id;
+        }
+
+        function clear_all(){
+            var rows = document.getElementsByTagName("tr");
+            for(var i = 0; i < rows.length; i++ ){
+                rows[i].style.backgroundColor="";
+            }
+        }
+
+        function choose_onw(ele){
+            ele.style.backgroundColor="grey";
+            onw_choice = ele.id;
+            document.getElementById("choice1").innerHTML=ele.innerText;
+        }
+
+        function choose_ret(ele){
+            ele.style.backgroundColor="grey";
+            ret_choice = ele.id;
+            document.getElementById("choice2").innerHTML=ele.innerText;
+        }
+
+        function choose_acc(ele){
+            ele.style.backgroundColor="grey";
+            acc_choice = ele.id;
+            document.getElementById("choice3").innerHTML=ele.innerText;
+        }
+
+        function clear_display(){
+            var eles = document.getElementsByClassName("display");
+            for(var i = 0; i < eles.length; i++){
+                eles[i].innerHTML="";
+            }
+        }
+
+        function save(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.alert("updated details!");
+                }
+            }
+            xhttp.open("GET", "UpdateItinDetails?tid="+paramValue+"&acc_id="+acc_choice+"&onw_id="+onw_choice+"&ret_id="+ret_choice, true);
+            xhttp.send();
+        }
+    </script>
+</html>

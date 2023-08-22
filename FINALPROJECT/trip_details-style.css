@@ -1,0 +1,139 @@
+.nav-bar {
+    color:white;
+    display:flex; 
+    flex-direction:row; 
+    justify-content:flex-start;
+    align-content: center; 
+    background-color:black; 
+    position: fixed; 
+    width: 100vw;
+    height: 60px;
+    z-index: 4;
+}
+
+#logo-def{
+    width:270px; 
+    display:flex;
+}
+
+#prof{
+    width:60px; 
+    margin-left:auto; 
+    display:flex;
+    flex-direction: column;
+    margin-right:30px;
+}
+
+#prof #drop{
+    display:none;
+    padding-top:4px;
+    flex-direction: column;
+    background-color: black;
+    width:90px;
+    font-family:PoiretOne-Regular;
+    font-size: large;
+}
+
+.nav-bar #prof span{
+    text-align: center;
+    padding:5px;
+}
+.nav-bar #prof:hover>#drop{
+    display: flex;
+}
+
+.drop-list:hover{
+    background-color:grey;
+}
+
+#scam{
+    position:absolute; 
+    background-color:transparent; 
+    width:76.4vw; 
+    height:92vh; 
+    margin-top:8.5vh; 
+    z-index:60; 
+    display:none; 
+    flex-direction:column; 
+}
+
+#row1{
+    width:800px; 
+    height:200px; 
+    margin-top:127px; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    margin:auto; 
+    z-index:61;
+}
+
+#row2{
+    width:800px; 
+    height:200px; 
+    margin-top:70px; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center;  
+    margin:auto;
+    z-index:61;
+}
+
+#iten, #budg{
+    width:300px; 
+    height:200px; 
+    display:flex; 
+    flex-direction:column; 
+    background-color:rgba(0,0,0,0.6); 
+    color:white; 
+    justify-content:center; 
+    align-items:center; 
+    font-size:30px;
+    border:2px solid white;
+}
+
+#checklist{
+    width:800px; 
+    height:200px; 
+    display:flex; 
+    flex-direction:column; 
+    background-color:rgba(0,0,0,0.6);
+    margin:auto; 
+    color:white; 
+    justify-content:center; 
+    align-items:center; 
+    font-size:30px;
+    border:2px solid white;
+}
+
+#scam div#iten:hover, #scam div#checklist:hover, #scam div#budg:hover{
+    background-color: rgba(100,100,100,0.5);
+}
+
+.slide-image{
+    background-image: url(images/painting-1682416389136-9172.jpg); 
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    align-items:center; 
+    font-family:Muli;
+}
+
+#details{
+    margin-top:auto; 
+    width: 300px; 
+    height:270px; 
+    background-color:rgba(128, 128, 128, 0.2); 
+    color:white; 
+    border:3px solid black;
+    position:relative; 
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    padding-left:40px;
+}
+
+#details div{
+    text-align: center;
+}
+

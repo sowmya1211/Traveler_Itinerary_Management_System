@@ -1,0 +1,26 @@
+<div class = "sign-page" style = "opacity:1;">   
+    
+    <form>
+        <p class = "error"></p> 
+        <div class = "line">
+            <label for="type" style = "display:block;margin:auto">Your Role</label>
+            <select name="type" id="type" style = "height:20px; width:150px; margin:auto; background-color:transparent; color:white; border-color:grey;">
+                <option value="Traveler" style = "background-color:black;">Traveler</option>
+                <option value="Guide" style = "background:black;">Guide</option>
+            </select>
+        </div>
+        <div class = "line">
+            <label for="uname">User Name</label>
+            <input type="text" id="uname" name="uname" onkeypress="if(event.keyCode==13){document.getElementById('pwd').focus();}">
+        </div>
+        <div class = "line">
+            <label for="pwd">Password</label>
+            <input type="password" id="pwd" name="pwd" onkeypress="if(event.keyCode==13){document.getElementById('cnfrm-password').focus();}">
+        </div>
+        <div class = "line">
+            <label for="cnfrm-password">Confirm Password</label>
+            <input type="password" id="cnfrm-password" name="cnfrm-password" onkeypress="if(event.keyCode==13){document.getElementsByTagName('button')[0].click();}">
+        </div>
+        <div class = "line"><button type="button" onclick = "val_signup()">Signup</button></div>
+    </form>
+</div>

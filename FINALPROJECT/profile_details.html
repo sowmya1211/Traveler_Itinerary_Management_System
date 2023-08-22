@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your details | Voyager</title>
+        <style>
+            html {
+                height: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                font-family: PoiretOne-Regular;
+                scroll-behavior: smooth; 
+            }
+            
+            body{
+                height: 100%;
+                overflow-x: hidden;
+                margin: 0;
+                display: flex;  
+                flex-direction:column; 
+                background-image:url('images/painting-1682416389136-9172.jpg'); 
+                background-size:100vw 100vh; 
+                position:absolute;
+            }
+            .nav-bar {
+                color:white;
+                display:flex; 
+                flex-direction:row; 
+                justify-content:flex-start;
+                align-content: center; 
+                background-color:rgba(0,0,0,0.8); 
+                position: fixed; 
+                width: 100vw;
+                height: 60px;
+                z-index: 4;
+            }
+            
+            .dropdown{
+                height: 60px; 
+                width:100px;
+                text-align: center;
+                padding-left: 50px;
+                margin-left:auto;
+                align-items: center;
+            }
+            
+            .dropdown a{
+                color: rgb(200,200,200);
+                text-decoration:none;
+                text-align: center;
+            }
+            
+            .dropdown p{
+                margin-top: 5px;
+                display: none;
+            }
+            
+            .dropdown:hover>p{
+                display: block;
+                background-color: rgba(0,0,0,0.8);
+            }
+            
+            .dropdown p span{
+                padding: 5px;
+                display: block;
+                cursor: pointer;
+            }
+            
+            .dropdown p span:hover{
+                background-color: rgba(50, 50, 50, 0.8);
+            }
+            
+            .nav-bar #logo{
+                width: 70px;
+                height: 30px;
+            }
+
+            .tab{
+                padding:10% 3%; 
+                font-size:17px;
+                cursor: pointer;
+                border-bottom: 1px solid white;
+                border-top: 1px solid white;
+            }
+
+            .tab:hover{
+                background-color: grey;
+            }
+
+            #page{
+                margin:auto auto; 
+                height:91.5%; 
+                width:100%; 
+                background-color:rgba(0,0,0,0.5); 
+                color:white; 
+                display:flex; 
+                margin-top:60px;
+            }
+
+            #nav{
+                height:100%; 
+                width:20%; 
+                background-color:black; 
+                display:flex; 
+                flex-direction:column;
+            }
+
+            #deet, #pass{
+                margin:auto auto; 
+                padding:3% 12%; 
+                height:80%; 
+                background-color:rgba(0,0,0,0.7); 
+                color:white; 
+                display:flex;
+               
+            }
+
+            form{
+                margin:auto; 
+                display:flex; 
+                flex-direction:column;
+                justify-content:center;
+            }
+
+            input, select{
+                height:40px; 
+                width:550px; 
+                margin:auto; 
+                background-color:transparent; 
+                color:white; 
+                border-color:grey;
+            }
+
+            button{
+                width:fit-content;
+                padding:20px;
+                background-color: black;
+                border: 1px solid white;
+                cursor: pointer;
+                color:white;
+                margin:auto;
+            }
+            button:hover{
+                background-color: grey;
+            }
+        </style>
+    </head>
+    <body style = "width:100vw; height:100vh; display:flex; flex-direction:column;">
+        <div class = "nav-bar">
+            <p style = "margin:5px;">
+                <a id = "logo" href = "start_page.html">
+                    <img src="images/logo2-1.png" alt="logo" width = 250px;>
+                </a>
+                <div class ="dropdown">
+                    <div id = "prof" style = "display: flex; cursor:pointer;" onmouseover="noarrow()" onmouseout="arrow()">
+                        <span id = "arrow" style = "font-size:40px; height:fit-content; margin-top:-5px; width:25px;">&#8964;</span>
+                        <img src="images/img.jpg" height="50px" style = "margin-top:5px; margin-left:8 px; border-radius:25px;">
+                    </div>
+                    <p id = "drop">
+                        <!--<span><a href = "trav_hmpg.html">HomePage</a></span><br>-->
+                        <span><a onclick= "homepage()" style="cursor:pointer;">HomePage</a></span><br>
+                        <span><a onclick = "logout()" style="cursor:pointer;">LogOut</a></span>
+                    </p>
+                </div>
+            </p>
+        </div>
+        <div id = "page">
+            <div id = "nav">
+                <div id = "role-tab" style = "padding:20%; font-size:30px; text-align:center;">Hi Traveller!</div>
+                <div id = "deet-tab" class = "tab" onclick="deet()">Details</div>
+                <div id = "pass-tab" class = "tab" onclick = "pass()">Change Password</div>
+            </div>
+            <div id = "deet">
+                <form>
+                    <input id = "role" type = "hidden">
+                    <input id = "uid" type = "hidden">
+                    <div>
+                        Your Name<br><input type = "text" id = "name" >
+                    </div><br>
+                    <div class = "trav">
+                        Age<br><input type = "text" id = "age">
+                    </div><br>
+                    <div class = "trav">
+                        Address<br><input type = "text" id = "address">
+                    </div><br>
+                    <div class = "trav">
+                        Sex<br>
+                        <select name="type" id="sex">
+                            <option id = "Female" value="Female" style = "background-color:black;">Female</option>
+                            <option id = "Male" value="Male" style = "background:black;">Male</option>
+                            <option id = "Others" value="Others" style = "background:black;">Others</option>
+                        </select>
+                    </div><br>
+                    <div>
+                        <p id = "phnoerror" style = "color:red;display: none;"></p>
+                        Phone no<br><input type = "tel" id = "phno" onchange="checkphemail()">
+                    </div><br>
+                    <div>
+                        <p id = "emailerror" style = "color:red;display: none;"></p>
+                        Email ID<br><input type = "email" id = "email" onchange="checkphemail()">
+                    </div><br>
+                    <div class = "guide">
+                        Proof<br><input type = "text" id = "proof" >
+                    </div><br>
+                    <button type="button" onclick = "update_deets()">Update</button>
+                </form>
+            </div>
+
+            <div id = "pass">
+                <form>
+                    <input id = "uid" type = "hidden">
+                    <p id = "error" style = "color:red;"></p>
+                    Password<input type = "password" id = "pwd1" ><br>
+                    Confirm password <input type = "password" id = "pwd2"><br>
+                    <button type="button" onclick = "update_pass()">Update</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script>
+        setInterval(sessionValidater,2000);
+        function sessionValidater(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText.split(",")[0]){
+                    }
+                    else{
+                        window.location.replace("login.html");
+                    }
+                }
+            }
+            xhttp.open("GET", "GetSession", true);
+            xhttp.send();
+        }
+
+        var uid;
+        var role;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                uid = this.responseText.split(",")[0];
+                role = this.responseText.split(",")[1];
+                if(uid){
+                   initiate(); 
+                }
+                else{
+                    window.location.replace("login.html");
+                }
+                
+                
+            }
+        }
+        xhttp.open("GET", "GetSession", true);
+        xhttp.send();
+
+        function initiate(){
+            document.getElementById("role-tab").innerHTML = "Hi "+role+", @"+uid;
+            document.getElementById("deet-tab").click();
+
+            if(role=="Traveler"){
+                var eles = document.getElementsByClassName("guide");
+                for(var i = 0; i < eles.length; i++){
+                    eles[i].style.display = "none";
+                }
+            }
+            else{
+                var eles = document.getElementsByClassName("trav");
+                for(var i = 0; i < eles.length; i++){
+                    eles[i].style.display = "none";
+                }
+            }
+        }
+
+        function logout(){
+            window.location.replace("LogOut");
+        }
+
+        function homepage(){
+            if(role=="Traveler"){
+                window.location.replace("trav_hmpg.html");
+            }
+            else
+              window.location.replace("guide_hmpg.html");
+        }
+        
+
+        function deet(){
+            document.getElementById("pass").style.display="none";
+            document.getElementById("deet").style.display="flex";
+            document.getElementById("deet-tab").style.backgroundColor="grey";
+            document.getElementById("pass-tab").style.backgroundColor="";
+            document.getElementById("uid").value = uid;
+            document.getElementById("role").value = role;
+            fetch();
+        }
+
+        function pass(){
+            document.getElementById("pass").style.display="flex";
+            document.getElementById("deet").style.display="none";
+            document.getElementById("deet-tab").style.backgroundColor="";
+            document.getElementById("pass-tab").style.backgroundColor="grey";
+            document.getElementById("uid").value = uid;
+        }
+
+        function fetch(){ 
+            var xhttp = new XMLHttpRequest();
+            var url = "GetProfDetails?uid="+uid+"&utype="+role;
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    display(this.responseText);
+                }
+            };  
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+
+        function display(txt){
+            var l = txt.split("','")
+            document.getElementById("name").value = l[3];
+            if(parseInt(l[4])!=0){
+               document.getElementById("age").value = l[4]; 
+            }
+            document.getElementById("address").value = l[5];
+            if(l[6]=="Male" || l[6]=="Female" || l[6]=="Others"){
+                document.getElementById(l[6]).selected = 'selected';
+            }
+            else{
+                document.getElementById("sex").value="";
+            }
+            document.getElementById("phno").value = l[7];
+            document.getElementById("email").value = l[8];
+            document.getElementById("proof").value = l[9];
+        }
+
+        function update_deets(){
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var address = document.getElementById("address").value;
+            var sex = document.getElementById("sex").value;
+            var phno = document.getElementById("phno").value;
+            var email = document.getElementById("email").value;
+            var proof = document.getElementById("proof").value;
+
+            var xhttp = new XMLHttpRequest();
+            var url = "UpdateProfileDetails?uid="+uid+"&utype="+role+"&name="+name+"&age="+age+"&address="+address+"&sex="+sex+"&phno="+phno+"&email="+email+"&proof="+proof;
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.alert("Updated details!");
+                    fetch();
+                }
+            };  
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function checkphemail() {
+              var patt1 = /^[A-Za-z][A-Za-z0-9]+@[a-z]+\.com$/;   //xxx@some.com
+              var patt2 = /^[0-9]{10}$/
+              var email = document.getElementById('email').value;
+              var phno = document.getElementById('phno').value;
+              if(patt1.test(email) == false)
+             {
+               document.getElementById('emailerror').style.display = "block";
+               document.getElementById('emailerror').innerHTML = "Email ID must match the standard format";
+             }
+             else 
+               document.getElementById('emailerror').style.display = "none";
+             if(patt2.test(phno) == false)
+             {
+               document.getElementById('phnoerror').style.display = "block";
+               document.getElementById('phnoerror').innerHTML = "Phone no must match the standard format";
+             }
+             else 
+               document.getElementById('phnoerror').style.display = "none";  
+          }
+
+        function update_pass(){
+            var p1 = document.getElementById("pwd1").value;
+            var p2 = document.getElementById("pwd2").value;
+
+            if(p1!=p2){
+                document.getElementById("error").innerHTML="Password mismatch!";
+            }
+            else{
+                var xhttp = new XMLHttpRequest();
+                var url = "UpdatePass?uid="+uid+"&pwd="+p1;
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("error").innerHTML="";
+                        window.alert("Updated password!");
+                        
+                    }
+                };  
+                xhttp.open("GET", url, true);
+                xhttp.send();
+            }
+            
+        }
+
+    </script>
+</html>
