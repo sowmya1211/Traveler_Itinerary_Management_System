@@ -1,0 +1,228 @@
+body {
+    margin: 0;
+    min-width: 250px;
+    display:flex; 
+    flex-direction:row; 
+    height:100vh;
+    width: 100vw;
+    align-items:center; 
+    justify-content:center;
+    background-image: url(images/painting-1682416389136-9172.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin :-8px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+    box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items */
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: rgba(40, 40, 40, 0.9);
+    font-size: 18px;
+    transition: 0.2s;
+    color:white;
+
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+    background: rgba(50, 50, 50, 0.9);
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+/* Style the close button */
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+    transition: width 2s, background-color 1s;
+}
+
+.close:hover {
+    width:90px;
+    background-color: #f44336;
+
+}
+
+.close:hover {
+    color: white;
+    text-align: center;
+}
+
+/* Style the header */
+.header {
+    background-color: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    color: white;
+    text-align: left;
+    width:65vw;
+    margin:auto;
+    margin-top:45px;
+}
+
+/* Clear floats after the header */
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the input */
+input {
+    margin: auto;
+    border: none;
+    border-radius: 0;
+    width: 65%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+    padding: 10px;
+    width: 25%;
+    background: rgb(35, 0, 0);
+    color: white;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+.addBtn:hover {
+    background-color: black;
+}
+
+.nav-bar {
+    color:white;
+    display:flex; 
+    flex-direction:row; 
+    justify-content:flex-start;
+    align-content: center; 
+    background-color:black; 
+    position: fixed; 
+    width: 100vw;
+    height: 60px;
+    z-index: 4;
+    margin-top:-90vh;
+    margin-left:16px;
+}
+
+#logo-def{
+    width:270px; 
+    display:flex;
+}
+
+#prof{
+    width:60px; 
+    margin-left:auto; 
+    display:flex;
+    flex-direction: column;
+    margin-right:30px;
+}
+
+#prof #drop{
+    display:none;
+    margin-top:0px;
+    flex-direction: column;
+    background-color: black;
+    width:90px;
+    font-family:PoiretOne-Regular;
+    font-size: large;
+}
+
+#prof #drop a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-bar #prof span{
+    text-align: center;
+    padding:5px;
+}
+.nav-bar #prof:hover>#drop{
+    display: flex;
+}
+
+.nav-bar #prof span:hover{
+    background-color:grey;
+}  
+
+#checklist-list{
+    display: flex; 
+    height:92vh; 
+    width:25vw; 
+    flex-direction:column; 
+    margin-right:auto; 
+    background-color:rgba(0,0,0,0.5); 
+    align-items:center; 
+    overflow-y:auto;
+}
+
+.checklist{
+    width:250px; 
+    min-height:150px; 
+    background-color:rgba(0,0,0,0.5); 
+    margin-top:30px; 
+    resize:none;
+    border:1px solid white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    border-radius:10px;
+    cursor: pointer;
+}
+
+.checklist:hover{
+    background-color:rgba(20,20,20,0.8); 
+}

@@ -1,0 +1,404 @@
+<web-app>
+    <servlet>
+        <servlet-name>BudgExpDetails</servlet-name>
+        <servlet-class>BudgExpViewDB</servlet-class>
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>BudgExpDetails</servlet-name>
+        <url-pattern>/BudgExpDetails</url-pattern>
+    </servlet-mapping> 
+
+    <servlet> 
+        <servlet-name>InsertBudg</servlet-name>   
+        <servlet-class>BudgEditDB</servlet-class>
+    </servlet>  
+    <servlet-mapping>  
+        <servlet-name>InsertBudg</servlet-name>
+        <url-pattern>/InsertBudg</url-pattern>
+    </servlet-mapping> 
+
+    <servlet>
+        <servlet-name>InsertExp</servlet-name>
+        <servlet-class>ExpEditDB</servlet-class>
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>InsertExp</servlet-name>
+        <url-pattern>/InsertExp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogInServlet</servlet-name>
+        <servlet-class>LogInServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogInServlet</servlet-name>
+        <url-pattern>/LogIn</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsertItineraryServlet</servlet-name>
+        <servlet-class>InsertItineraryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InsertItineraryServlet</servlet-name>
+        <url-pattern>/InsertItinerary</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ItinViewDB</servlet-name>
+        <servlet-class>ItinViewDB</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ItinViewDB</servlet-name>
+        <url-pattern>/ItinViewDB</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValidateUnameServlet</servlet-name>
+        <servlet-class>ValidateUnameServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ValidateUnameServlet</servlet-name>
+        <url-pattern>/ValidateUname</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsertUserServlet</servlet-name>
+        <servlet-class>InsertUserServlet</servlet-class>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>InsertUserServlet</servlet-name>
+        <url-pattern>/InsertUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetProfDetailsServlet</servlet-name>
+        <servlet-class>GetProfDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetProfDetailsServlet</servlet-name>
+        <url-pattern>/GetProfDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateProfileDetailsServlet</servlet-name>
+        <servlet-class>UpdateProfileDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateProfileDetailsServlet</servlet-name>
+        <url-pattern>/UpdateProfileDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdatePassServlet</servlet-name>
+        <servlet-class>UpdatePassServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdatePassServlet</servlet-name>
+        <url-pattern>/UpdatePass</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionInitiateServlet</servlet-name>
+        <servlet-class>SessionInitiateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SessionInitiateServlet</servlet-name>
+        <url-pattern>/SessionInitiate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetSessionServlet</servlet-name>
+        <servlet-class>GetSessionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetSessionServlet</servlet-name>
+        <url-pattern>/GetSession</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>LogOutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/LogOut</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllTripsServlet</servlet-name>
+        <servlet-class>GetAllTripsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAllTripsServlet</servlet-name>
+        <url-pattern>/GetAllTrips</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetTripServlet</servlet-name>
+        <servlet-class>GetTripServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetTripServlet</servlet-name>
+        <url-pattern>/GetTrip</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCitiesServlet</servlet-name>
+        <servlet-class>GetCitiesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetCitiesServlet</servlet-name>
+        <url-pattern>/GetCities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsertTripServlet</servlet-name>
+        <servlet-class>InsertTripServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InsertTripServlet</servlet-name>
+        <url-pattern>/InsertTrip</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetTripDetailsServlet</servlet-name>
+        <servlet-class>GetTripDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetTripDetailsServlet</servlet-name>
+        <url-pattern>/GetTripDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetItinServlet</servlet-name>
+        <servlet-class>GetItinServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetItinServlet</servlet-name>
+        <url-pattern>/GetItin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllTransServlet</servlet-name>
+        <servlet-class>GetAllTransServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAllTransServlet</servlet-name>
+        <url-pattern>/GetAllTrans</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TransFiltServlet</servlet-name>
+        <servlet-class>TransFiltServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TransFiltServlet</servlet-name>
+        <url-pattern>/TransFilt</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllAccomServlet</servlet-name>
+        <servlet-class>GetAllAccomServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAllAccomServlet</servlet-name>
+        <url-pattern>/GetAllAccom</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccFiltServlet</servlet-name>
+        <servlet-class>AccFiltServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AccFiltServlet</servlet-name>
+        <url-pattern>/AccFilt</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetPlaceOptionsServlet</servlet-name>
+        <servlet-class>GetPlaceOptionsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetPlaceOptionsServlet</servlet-name>
+        <url-pattern>/GetPlaceOptions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateItinDetailsServlet</servlet-name>
+        <servlet-class>UpdateItinDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateItinDetailsServlet</servlet-name>
+        <url-pattern>/UpdateItinDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetItineraryDetailsServlet</servlet-name>
+        <servlet-class>GetItineraryDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetItineraryDetailsServlet</servlet-name>
+        <url-pattern>/GetItineraryDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DelItinServlet</servlet-name>
+        <servlet-class>DelItinServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DelItinServlet</servlet-name>
+        <url-pattern>/DelItin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetBudgServlet</servlet-name>
+        <servlet-class>GetBudgServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetBudgServlet</servlet-name>
+        <url-pattern>/GetBudg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetChecklistServlet</servlet-name>
+        <servlet-class>GetChecklistServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetChecklistServlet</servlet-name>
+        <url-pattern>/GetChecklist</url-pattern>
+    </servlet-mapping> 
+
+    <servlet>
+        <servlet-name>GetTripChecklistsServlet</servlet-name>
+        <servlet-class>GetTripChecklistsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetTripChecklistsServlet</servlet-name>
+        <url-pattern>/GetTripChecklists</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetChecklistDetailsServlet</servlet-name>
+        <servlet-class>GetChecklistDetailsServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>GetChecklistDetailsServlet</servlet-name>
+        <url-pattern>/GetChecklistDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InsertChecklistServlet</servlet-name>
+        <servlet-class>InsertChecklistServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>InsertChecklistServlet</servlet-name>
+        <url-pattern>/InsertChecklist</url-pattern>
+    </servlet-mapping>
+
+   
+
+    <servlet>
+        <servlet-name>DelChecklistItemServlet</servlet-name>
+        <servlet-class>DelChecklistItemServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DelChecklistItemServlet</servlet-name>
+        <url-pattern>/DelChecklistItem</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HideChecklistItemServlet</servlet-name>
+        <servlet-class>HideChecklistItemServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HideChecklistItemServlet</servlet-name> 
+        <url-pattern>/HideChecklistItem</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddItemServlet</servlet-name>
+        <servlet-class>AddItemServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddItemServlet</servlet-name>
+        <url-pattern>/AddItem</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+       <servlet-name>InR</servlet-name>
+       <servlet-class>RecsInsViewDB</servlet-class>
+    </servlet>
+    <servlet-mapping>
+       <servlet-name>InR</servlet-name>
+       <url-pattern>/InR</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TransPromoViewDB</servlet-name>
+        <servlet-class>TransPromoViewDB</servlet-class>
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>TransPromoViewDB</servlet-name>
+        <url-pattern>/TransPromoDetails</url-pattern>
+    </servlet-mapping> 
+
+    <servlet>
+        <servlet-name>TransPromoEditDB</servlet-name>
+        <servlet-class>TransPromoEditDB</servlet-class>
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>TransPromoEditDB</servlet-name>
+        <url-pattern>/TransPromoEditDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccomPromoViewDB</servlet-name>
+        <servlet-class>AccomPromoViewDB</servlet-class> 
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>AccomPromoViewDB</servlet-name>
+        <url-pattern>/AccomPromoDetails</url-pattern>
+    </servlet-mapping> 
+
+    <servlet>
+        <servlet-name>AccomPromoEditDB</servlet-name>
+        <servlet-class>AccomPromoEditDB</servlet-class>
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>AccomPromoEditDB</servlet-name>
+        <url-pattern>/AccomPromoEditDetails</url-pattern>
+    </servlet-mapping>
+</web-app>
